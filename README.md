@@ -1,5 +1,6 @@
-This repo is a wrapper of ncdu.
+![](https://img.shields.io/badge/python-3.6.5-orange.svg)
 
+This repo is a wrapper of ncdu.
 ## 目标
 
 找出前n个大文件，列出其绝对路径
@@ -38,7 +39,7 @@ $ ncdu
 Then, install [my repo](https://github.com/hjb912/ncdu_nlarge.git)
 
 ```bash
-$ wget https://github.com/hjb912/ncdu_nlarge.git
+$ git clone https://github.com/hjb912/ncdu_nlarge
 ```
 
 
@@ -49,7 +50,7 @@ $ wget https://github.com/hjb912/ncdu_nlarge.git
 
 ```bash
 $ cd /ncdu_nlarge
-# python extract.py -p='/' -n=10
+# python extract.py -p '/' -n 10
 ```
 
 参数说明
@@ -63,7 +64,7 @@ $ cd /ncdu_nlarge
 
 ```bash
 $ cd /ncdu_nlarge
-# python extract.py -p='/' -n=10 -ssh='ssh -C root@1.2.3.4 -p 12345'
+# python extract.py -p '/' -n 10 -ssh 'ssh -C root@1.2.3.4 -p 12345'
 ```
 
 参数说明
