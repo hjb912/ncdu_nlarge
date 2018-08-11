@@ -5,6 +5,7 @@ import json
 import gzip
 import heapq
 import logging
+import functools
 
 from operator import itemgetter
 from args import parser
@@ -74,15 +75,28 @@ def clean():
     os.system(clean_cmd)
 
 
-if __name__ == '__main__':
+def timeit(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        func(*args, **kwargs)
+        used_time = time.time() - start_time
+        LOG.info('>' * 50)
+        LOG.info(f'used time: {used_time}')
+    return wrapper
+
+
+@timeit
+def main():
     init_logger(logging.INFO)
 
-    start_time = time.time()
     args = parser.parse_args()
     run(args)
 
     extract(EXPORT_FILE, int(args.nlarge))
-    LOG.info('>' * 50)
-    LOG.info('used time: {}'.format(time.time() - start_time))
 
     clean()
+
+
+if __name__ == '__main__':
+    main()
