@@ -17,7 +17,7 @@ LOG = logging.getLogger('ncdu')
 
 def extract(file, nlarge=10):
     """
-    根据检索到的文件提取完成路径
+    根据检索到的文件提取完整路径
     :param file 文件名称
     :param nlarge 前n截取显示···
     """
@@ -34,10 +34,7 @@ def extract(file, nlarge=10):
     _extract(res[1:], file_list, parent_path)
 
     ans = heapq.nlargest(nlarge, file_list, key=itemgetter(1))
-    LOG.info('the result (asize: KB):')
-    LOG.info('>' * 50)
-    for el in ans:
-        LOG.info(el)
+    display(ans)
 
 
 def _extract(res, file_list, parent_path):
@@ -79,11 +76,22 @@ def timeit(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         start_time = time.time()
-        func(*args, **kwargs)
+        res = func(*args, **kwargs)
         used_time = time.time() - start_time
-        LOG.info('>' * 50)
-        LOG.info(f'used time: {used_time}')
+        display()
+        LOG.info(f'used time(s): {used_time}')
+        return res
     return wrapper
+
+
+def display(ans=None):
+    if ans:
+        LOG.info('the result (asize: KB):')
+        LOG.info('>' * 50)
+        for el in ans:
+            LOG.info(el)
+    else:
+        LOG.info('>' * 50)
 
 
 @timeit
