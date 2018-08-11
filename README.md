@@ -64,12 +64,12 @@ $ python extract.py -p '/' -n 10
 
 ```bash
 $ cd /ncdu_nlarge
-$ python extract.py -p '/' -n 10 -ssh 'ssh -C root@1.2.3.4 -p 12345'
+$ python extract.py -p '/' -n 10 -s 'ssh -C root@1.2.3.4 -p 12345'
 ```
 
 参数说明
 
-- `-ssh` – 通过ssh获取远端机器信息，导出文件到本地。
+- `-s` – 通过ssh获取远端机器信息，导出文件到本地。
 
 
 ## 测试
