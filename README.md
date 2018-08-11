@@ -3,7 +3,7 @@
 This repo is a wrapper of ncdu.
 ## 目标
 
-找出前n个大文件，列出其绝对路径
+找出前n个大文件，列出其路径。
 
 ## 如何使用
 
@@ -46,11 +46,11 @@ $ git clone https://github.com/hjb912/ncdu_nlarge
 
 ## 用法
 
-1.如果目标机器硬盘空间还有余，则可以直接在上面运行
+1.如果目标机器硬盘空间还有余，则可以直接在上面运行。
 
 ```bash
 $ cd /ncdu_nlarge
-# python extract.py -p '/' -n 10
+$ python extract.py -p '/' -n 10
 ```
 
 参数说明
@@ -64,9 +64,17 @@ $ cd /ncdu_nlarge
 
 ```bash
 $ cd /ncdu_nlarge
-# python extract.py -p '/' -n 10 -ssh 'ssh -C root@1.2.3.4 -p 12345'
+$ python extract.py -p '/' -n 10 -ssh 'ssh -C root@1.2.3.4 -p 12345'
 ```
 
 参数说明
 
 - `-ssh` – 通过ssh获取远端机器信息，导出文件到本地。
+
+
+## 测试
+本机测试
+
+配置：mbp，cpu:2.7GHz，mem:8GB，hd：128GB
+
+扫描disk：93.19 GB，1722492 files，中间导出文件19.7MB，用时296.76s。
